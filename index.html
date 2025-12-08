@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Noto+Sans+Thai:wght@100..900&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div>
+    </div>
+    <header class="app-header">
+        <h1>Smart Student Portal</h1>
+        <div class="user-menu">👤</div>
+    </header>
+
+    <nav class="sidebar">
+        <button data-page="dashboard">Dashboard</button>
+        <button data-page="profile">Profile</button>
+        <button data-page="courses">Courses</button>
+        <button data-page="assignments">Assignments</button>
+        <button data-page="attendance">Attendance</button>
+        <button data-page="report">Report Card</button>
+        <button data-page="logout">Logout</button>
+    </nav>
+
+    <main id="app">
+        <section class="welcome-section">
+            
+            <header>
+                <img src="css/images/graduate.png" alt="Logo" class="logo">
+                <h4 style="color: var(--primary-color);">Smart Student Portal</h4>
+            </header>
+
+            <div class="welcome-container">
+                <article class="welcome-text">
+                    <h3>Smart Student Portal</h3>
+                    <p>
+                        Your all-in-one solution for managing your academic life efficiently and effectively.
+                        Access your courses, assignments, attendance, and report cards all in one place.
+                    </p>
+                    <button class="register-btn welcome-btn">Register</button>
+                    <button class="login-btn welcome-btn">Login</button>
+                    <div class="welcome-features">
+                        <div class="welcome-items item1">
+                            <div class=""><img src="css/images/book.png" alt="Logo" class="logo"></div>
+                            <p>Course Management</p>
+                        </div>
+                        <div class="welcome-items item2">
+                            <div><img src="css/images/user.png" alt="Logo" class="logo"></div>
+                            <p>Track Attendance</p>
+                        </div>
+                        <div class="welcome-items item3">
+                            <div><img src="css/images/graduate.png" alt="Logo" class="logo"></div>
+                            <p>Monitor Progress</p>
+                        </div>
+                    </div>
+                </article>
+                <div class="welcome-image">
+                    <img src="css/images/Student.png" alt="Logo" class="logo">
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- REGISTRATION SECTION -->
+
+        <section class="registration-section">
+
+            <fieldset class="form-fieldset">
+            
+                <form class="registration-form form" action="">
+                    <button onclick="registrationBackBtn()" id="registration-back-btn"> <- Back</button>
+                    <legend>Create Account</legend>
+                    <p>Join Smart Student Portal today.</p>
+                    <label for="reg-username">Username:</label>
+                    <input type="text" id="reg-username" name="reg-username" placeholder="choose a username" required>
+
+                    <label for="reg-email">Email:</label>
+                    <input type="email" id="reg-email" name="reg-email" placeholder="you@example.com" required>
+
+                    <label for="reg-password">Password:</label>
+                    <input type="password" id="reg-password" name="reg-password" placeholder="create a password" required>
+
+                    <label for="reg-confirm-password">Confirm Password:</label>
+                    <input type="password" id="reg-confirm-password" name="reg-confirm-password" placeholder="confirm your password" required>
+
+                    <button type="submit">Register</button>
+                    <br>
+                    <p>Already have an account? <a href="#" onclick="showLoginSection()">Login here</a></p>
+                </form>
+            </fieldset>
+
+        </section>
+
+        <!-- LOGIN SECTION -->
+
+        <section class="login-section">
+            
+            <fieldset class="form-fieldset">
+            
+                <form class="login-form form" action="">
+                    <button onclick="loginBackBtn()" id="login-back-btn"> <- Back</button>
+                    <legend>Welcome Back</legend>
+                    <p>login to your account.</p>
+                    <label for="login-username">Username:</label>
+                    <input type="text" id="login-username" name="login-username" placeholder="Enter your username" required>
+
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" name="login-password" placeholder="Enter your password" required>
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember-me" name="remember-me">
+                        <label for="remember-me">Remember Me</label>
+                        
+                    </div>
+                    
+                    <button type="submit">Login</button>
+                    <br>
+                    <p>Don't have an account? <a href="#" onclick="showRegistrationSection()">Register here</a></p>
+                    <p class="forgot-password-link"><a href="#" onclick="showForgotPasswordSection()">Forgot Password?</a></p>
+                    
+
+                </form>
+            </fieldset>
+
+        </section>
+
+        <!-- FORGOT PASSWORD SECTION 1 -->
+            
+        <section class="forgot-password-section">
+            
+            <fieldset class="form-fieldset">
+            
+                <form class="forgot-password-form form" action="">
+                    <button onclick="forgotPasswordBackBtn()" id="forgot-back-btn"> <- Back</button>
+                    <legend>Forgot Password</legend>
+                    <p>Enter your email to reset your password.</p>
+                    <label for="forgot-email">Email:</label>
+                    <input type="email" id="forgot-email" name="forgot-email" placeholder="you@example.com" required>
+                    <button onclick="showResetPasswordSection()" type="submit">Reset Password</button>
+                </form>
+            </fieldset>
+
+        </section>
+
+        <!-- FORGOT PASSWORD SECTION 2 -->
+
+        <section class="reset-password-section">
+            
+            <fieldset class="form-fieldset">
+            
+                <form class="reset-password-form form" action="">
+                    <button onclick="resetPasswordBackBtn()" id="reset-back-btn"> <- Back</button>
+                    <legend>Reset Password</legend>
+                    <p>Enter your new password below.</p>
+                    <label for="new-password">New Password:</label>
+                    <input type="password" id="new-password" name="new-password" placeholder="Enter new password" required>
+
+                    <label for="confirm-new-password">Confirm New Password:</label>
+                    <input type="password" id="confirm-new-password" name="confirm-new-password" placeholder="Confirm new password" required>
+
+                    <button type="submit">Update Password</button>
+                </form>
+            </fieldset>
+        </section>
+
+        <!-- DASHBOARD SECTION -->
+
+        <section class="dashboard-section">
+            <header>
+                <h2>Dashboard</h2>
+                <p>Welcome to your dashboard!</p>
+            </header>>
+    </main>
+
+    <script src="javascript/router.js"></script>
+    <script src="javascript/ui.js"></script>
+    <script type="module" src="javascript/app.js"></script>
+</body>
+</html>
