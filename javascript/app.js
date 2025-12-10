@@ -1,3 +1,5 @@
+import { saveUser, userExists, validateLogin } from "./storage.js";
+
 
 // VALIDATION HELPERS
 function validateEmail(email) {
@@ -104,37 +106,27 @@ window.addEventListener("DOMContentLoaded", () => {
             }
 
             if (valid) {
-                // Get existing users from localStorage
-                let users = JSON.parse(localStorage.getItem("users")) || [];
-
-                // Check if email or username already exists
-                const exists = users.some(u => u.email === email.value || u.username === username.value);
-                if (exists) {
+                // Check duplicates
+                if (userExists(email.value, username.value)) {
                     alert("Username or email already exists!");
                     return;
                 }
 
-                // Add new user
+                // Create new user
                 const newUser = {
-                    username: username.value,
-                    email: email.value,
-                    password: password.value
+                    username: username.value.trim(),
+                    email: email.value.trim(),
+                    password: password.value.trim()
                 };
 
-                users.push(newUser);
-
-                // Save back to localStorage
-                localStorage.setItem("users", JSON.stringify(users));
+                // Save to localStorage using storage.js helper
+                saveUser(newUser);
 
                 alert("Registration successful!");
-
-                // Clear the form
                 regForm.reset();
-
-                // Show login page after registration
                 showLoginSection();
-
             }
+
         });
     }
 
@@ -171,9 +163,18 @@ window.addEventListener("DOMContentLoaded", () => {
             }
 
             if (valid) {
-                alert("Login input is valid!");
+                const loggedInUser = validateLogin(userField.value.trim(), pwField.value.trim());
+
+                if (!loggedInUser) {
+                    showError(pwField, "Invalid username or password");
+                    return;
+                }
+                localStorage.setItem('currentUser', userField.value.trim());
+
+                alert("Login successful!");
                 showDashboard();
             }
+
         });
     }
 

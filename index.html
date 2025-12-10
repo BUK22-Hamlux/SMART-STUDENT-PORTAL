@@ -5,30 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Noto+Sans+Thai:wght@100..900&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <div>
-    </div>
-    <header class="app-header">
-        <h1>Smart Student Portal</h1>
-        <div class="user-menu">👤</div>
-    </header>
-
-    <nav class="sidebar">
-        <button data-page="dashboard">Dashboard</button>
-        <button data-page="profile">Profile</button>
-        <button data-page="courses">Courses</button>
-        <button data-page="assignments">Assignments</button>
-        <button data-page="attendance">Attendance</button>
-        <button data-page="report">Report Card</button>
-        <button data-page="logout">Logout</button>
-    </nav>
 
     <main id="app">
-        <section class="welcome-section">
+        <section class="welcome-section" style="display: none;">
             
             <header>
                 <img src="css/images/graduate.png" alt="Logo" class="logo">
@@ -68,7 +50,7 @@
 
         <!-- REGISTRATION SECTION -->
 
-        <section class="registration-section">
+        <section class="registration-section" style="display: none;">
 
             <fieldset class="form-fieldset">
             
@@ -98,7 +80,7 @@
 
         <!-- LOGIN SECTION -->
 
-        <section class="login-section">
+        <section class="login-section" style="display: none;">
             
             <fieldset class="form-fieldset">
             
@@ -130,7 +112,7 @@
 
         <!-- FORGOT PASSWORD SECTION 1 -->
             
-        <section class="forgot-password-section">
+        <section class="forgot-password-section" style="display: none;">
             
             <fieldset class="form-fieldset">
             
@@ -148,7 +130,7 @@
 
         <!-- FORGOT PASSWORD SECTION 2 -->
 
-        <section class="reset-password-section">
+        <section class="reset-password-section" style="display: none;">
             
             <fieldset class="form-fieldset">
             
@@ -167,13 +149,106 @@
             </fieldset>
         </section>
 
+        <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="css/images/graduation-hat.png" alt="Logo" class="logo">
+                </span>
+                <div class="text header-text">
+                    <span class="name">Student Portal</span>
+                    <span class="caption">Academic Hub</span>
+                </div>
+            </div>
+
+            <i class='bx  bx-chevron-right toggle'></i> 
+
+        </header>
+        <hr>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx  bx-home-alt icon'></i> 
+                        <span class="text nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx  bx-user icon'></i> 
+                        <span class="text nav-text">Profile</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx  bx-book-open icon'></i> 
+                        <span class="text nav-text">Courses</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx  bx-book-alt icon'></i>   
+                        <span class="text nav-text">Assignments</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx  bx-key icon'></i> 
+                        <span class="text nav-text">Attendance</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx  bx-medal icon'></i>  
+                        <span class="text nav-text">Report Card</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx  bx-cog icon'></i> 
+                        <span class="text nav-text">Settings</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+        <hr>
+        <footer>
+            <div class="footer-bar">
+                <li>
+                    <a>
+                        <i class='bx  bx-log-out icon'></i>  
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+            </div>
+
+        </footer>
+
+    </nav>
+
+    <header class="app-header">
+        <div class="header-info">
+            <div class="user">
+                <h3>Smart Student Portal</h3>
+                <p>Welcome back <span class="user-name"></span></p>
+            </div>
+            <div class="user-img">
+                <img src="css/images/user.png" alt="profile-picture">
+            </div>
+        </div>
+        
+    </header>
+
+
+
         <!-- DASHBOARD SECTION -->
 
-        <section class="dashboard-section">
-            <header>
-                <h2>Dashboard</h2>
-                <p>Welcome to your dashboard!</p>
-            </header>>
+        <section class="dashboard-section main-content">
+            <p>kjflkdsfgghjgkjhgkjgkjhghl</p>
+        </section>
+
+
     </main>
 
     <script src="javascript/router.js"></script>

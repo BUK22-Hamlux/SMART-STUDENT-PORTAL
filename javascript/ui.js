@@ -39,12 +39,27 @@ function showResetPasswordSection() {
     document.querySelector(".reset-password-section").style.display = "flex";
 }
 
+function showSidebar(){
+    const toggle = document.querySelector('.toggle');
+    const sidebar = document.querySelector('.sidebar');
+    toggle.addEventListener('click', function(){
+        sidebar.classList.toggle('close')
+    })
+}
 // Function to show dashboard after login
 function showDashboard() {
-    showSection("welcome-section");
+    showSection("dashboard-section");
     document.querySelector(".app-header").style.display = "flex";
-    document.querySelector(".sidebar").style.display = "flex";
+    document.querySelector(".sidebar").style.display = "inline-block";
+    showSidebar();
+    let usernameSpan = document.querySelector('.user-name');
+    let usernameDisplay = localStorage.getItem('currentUser');
+    if (usernameDisplay){
+        
+        usernameSpan.textContent = usernameDisplay;
+    } 
 }
+
 
 // Back button handlers
 
