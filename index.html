@@ -15,6 +15,113 @@
 
     <main id="app">
 
+             <!-- SIDEBAR SECTION -->
+
+        <nav class="sidebar close">
+
+            <header>
+                    
+                <div class="image-text">
+                    <span class="image">
+                        <img src="css/images/graduation-hat.png" alt="Logo" class="logo">
+                    </span>
+                    <div class="text header-text">
+                        <span class="name">Student Portal</span>
+                        <span class="caption">Academic Hub</span>
+                    </div>
+                </div>
+
+                <i class='bx  bx-chevron-right toggle'></i> 
+
+            </header>
+
+            <hr>
+
+            <div class="menu-bar">
+                <div class="menu">
+
+                    <li class="nav-link" id="dashboardLink">
+                        <a href="#">
+                            <i class='bx  bx-home-alt icon'></i> 
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link" id="profileLink">
+                        <a href="#">
+                            <i class='bx  bx-user icon'></i> 
+                            <span class="text nav-text">Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link" id="courseLink">
+                        <a href="#">
+                            <i class='bx  bx-book-open icon'></i> 
+                            <span class="text nav-text">Courses</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link" id="assignmentLink">
+                        <a href="#">
+                            <i class='bx  bx-book-alt icon'></i>   
+                            <span class="text nav-text">Assignments</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx  bx-key icon'></i> 
+                            <span class="text nav-text">Attendance</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx  bx-medal icon'></i>  
+                            <span class="text nav-text">Report Card</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link" id="settingsLink">
+                        <a href="#">
+                            <i class='bx  bx-cog icon'></i> 
+                            <span class="text nav-text">Settings</span>
+                        </a>
+                    </li>
+
+                    <hr>
+
+                </div>
+
+                <div class="footer-bar">
+                    <li>
+                        <a>
+                            <i class='bx  bx-log-out icon'></i>  
+                            <span class="text nav-text">Logout</span>
+                        </a>
+                    </li>
+                </div>
+            </div>
+        </nav>
+
+        <header class="app-header">
+
+            <i class="bx bx-menu" id="hamburgerIcon"></i>
+            <div class="header-info">
+                <div class="user">
+                    <h3 class="app-header-info">Smart Student Portal</h3>
+                    <p class="app-header-text"></p>
+                </div>
+                <div class="user-img header-info-left">
+                    <img src="css/images/user.png" alt="profile-picture" id="header-profile-picture">
+                </div>
+                <div class="add-course-btn header-info-left">+ Add</div>
+                <div class="add-assignment-btn header-info-left">+ Add</div>
+            </div>
+                
+        </header>
+
+
         <section class="welcome-section">
             
             <header>
@@ -65,7 +172,7 @@
             
                 <form class="registration-form form" action="">
 
-                    <button onclick="registrationBackBtn()" id="registration-back-btn">Back</button>
+                    <button id="registrationSectionBackBtn">Back</button>
                     <legend>Create Account</legend>
                     <p>Join Smart Student Portal today.</p>
 
@@ -102,8 +209,8 @@
                      placeholder="confirm your password" 
                      required>
 
-                    <button type="submit">Register</button><br>
-                    <p>Already have an account? <a href="#" onclick="showLoginSection()">Login here</a></p>
+                    <button type="submit" class="register-btn">Register</button><br>
+                    <p>Already have an account? <a href="#" id="showLoginSection">Login</a></p>
 
                 </form>
 
@@ -121,7 +228,7 @@
             
                 <form class="login-form form" action="">
 
-                    <button onclick="loginBackBtn()" id="login-back-btn">Back</button>
+                    <button id="loginSectionBackBtn">Back</button>
                     <legend>Welcome Back</legend>
                     <p>login to your account.</p>
 
@@ -148,8 +255,8 @@
                     
                     <button type="submit">Login</button><br>
 
-                    <p>Don't have an account? <a href="#" onclick="showRegistrationSection()">Register here</a></p>
-                    <p class="forgot-password-link"><a href="#" onclick="showForgotPasswordSection()">Forgot Password?</a></p>
+                    <p>Don't have an account? <a href="#" id="showRegistrationSection">Register</a></p>
+                    <p class="forgot-password-link"><a href="#" id="forgotPasswordSection">Forgot Password?</a></p>
                     
                 </form>
 
@@ -167,7 +274,7 @@
             
                 <form class="forgot-password-form form" action="">
 
-                    <button onclick="forgotPasswordBackBtn()" id="forgot-back-btn">Back</button>
+                    <button id="forgotPasswordBackBtn">Back</button>
                     <legend>Forgot Password</legend>
                     <p>Enter your email to reset your password.</p>
 
@@ -180,7 +287,7 @@
                      required
                      >
 
-                    <button onclick="showResetPasswordSection()" type="submit">Reset Password</button>
+                    <button id="resetPasswordSection" type="submit">Reset Password</button>
 
                 </form>
 
@@ -197,7 +304,7 @@
             
                 <form class="reset-password-form form" action="">
 
-                    <button onclick="resetPasswordBackBtn()" id="reset-back-btn">Back</button>
+                    <button id="resetPasswordBackBtn">Back</button>
                     <legend>Reset Password</legend>
                     <p>Enter your new password below.</p>
 
@@ -225,116 +332,6 @@
         </section>
 
 
-        <!-- SIDEBAR SECTION -->
-
-
-        <nav class="sidebar close">
-
-            <header>
-                
-                <div class="image-text">
-                    <span class="image">
-                        <img src="css/images/graduation-hat.png" alt="Logo" class="logo">
-                    </span>
-                    <div class="text header-text">
-                        <span class="name">Student Portal</span>
-                        <span class="caption">Academic Hub</span>
-                    </div>
-                </div>
-
-                <i class='bx  bx-chevron-right toggle'></i> 
-
-            </header>
-
-            <hr>
-
-            <div class="menu-bar">
-
-                <div class="menu">
-
-                    <li class="nav-link" onclick="showDashboard()">
-                        <a href="#">
-                            <i class='bx  bx-home-alt icon'></i> 
-                            <span class="text nav-text">Dashboard</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link" onclick="showProfile()">
-                        <a href="#">
-                            <i class='bx  bx-user icon'></i> 
-                            <span class="text nav-text">Profile</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link" onclick="showCourse()">
-                        <a href="#">
-                            <i class='bx  bx-book-open icon'></i> 
-                            <span class="text nav-text">Courses</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link" id="assignmentLink">
-                        <a href="#">
-                            <i class='bx  bx-book-alt icon'></i>   
-                            <span class="text nav-text">Assignments</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx  bx-key icon'></i> 
-                            <span class="text nav-text">Attendance</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx  bx-medal icon'></i>  
-                            <span class="text nav-text">Report Card</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx  bx-cog icon'></i> 
-                            <span class="text nav-text">Settings</span>
-                        </a>
-                    </li>
-
-                    <hr>
-
-                </div>
-
-                <div class="footer-bar">
-                    <li>
-                        <a>
-                            <i class='bx  bx-log-out icon'></i>  
-                            <span class="text nav-text">Logout</span>
-                        </a>
-                    </li>
-                </div>
-
-            </div>
-
-        </nav>
-
-        <header class="app-header">
-
-            <div class="header-info">
-                <div class="user">
-                    <h3 class="app-header-info">Smart Student Portal</h3>
-                    <p class="app-header-text"></p>
-                </div>
-                <div class="user-img header-info-left">
-                    <img src="css/images/user.png" alt="profile-picture" id="header-profile-picture">
-                </div>
-                <div class="add-course-btn header-info-left">+ Add Course</div>
-                <div class="add-assignment-btn header-info-left">+ Add Assignment</div>
-            </div>
-            
-        </header>
-
-
         <!-- DASHBOARD SECTION -->
 
 
@@ -345,7 +342,7 @@
                 <div class="features-cards course-card">
                     <div>
                         <p>Total Coures</p>
-                        <span></span>
+                        <span id="totalCourse"></span>
                     </div>
                     <div class="icon-container course-icon-container">
                         <i class="bx bx-book-open icon"></i>
@@ -355,7 +352,7 @@
                 <div class="features-cards assignment-card">
                     <div>
                         <p>Assignments Due</p>
-                        <span></span>
+                        <span id="totalAssignmentDue"></span>
                     </div>
                     <div class="icon-container assignment-icon-container">
                         <i class="bx bx-book-alt icon"></i>
@@ -365,7 +362,7 @@
                 <div class="features-cards attendance-card">
                     <div>
                         <p>Attendance</p>
-                        <span></span>
+                        <span id="totalAttendance"></span>
                     </div>
                     <div class="icon-container attendance-icon-container">
                         <i class="bx bx-key icon"></i>
@@ -375,7 +372,7 @@
                 <div class="features-cards report-card">
                     <div>
                         <p>Current GPA</p>
-                        <span></span>
+                        <span id="CurrentGPA"></span>
                     </div>
                     <div class="icon-container report-icon-container">
                         <i class="bx bx-medal icon"></i>
@@ -503,11 +500,11 @@
                      disabled>
                     </textarea>
 
-                    <button onclick="editProfileBtn()" type="button" id="editBtn">Edit Profile</button>
+                    <button type="button" id="editProfileBtn">Edit Profile</button>
 
                     <div class="edit">
-                        <button onclick="saveChangesBtn()" type="button" id="saveChanges">Save Changes</button>
-                        <button onclick="cancelChangesBtn()" type="button" id="cancelChanges">Cancel</button>
+                        <button type="button" id="saveProfileChanges">Save Changes</button>
+                        <button type="button" id="cancelProfileChanges">Cancel</button>
                     </div>
 
                 </div>
@@ -685,6 +682,26 @@
 
         </section>
 
+
+        <section class="settings-section main-content">
+            <div class="appearance-mode-container">
+                <h3>Appearance</h3>
+                <div class="mode-box">
+                    <div class="mode-text-icon">
+                        <i class="bx bx-sun" id="modeIcon"></i>
+                        <div>
+                            <h3 class="mode-text" id="modeText"></h3>
+                            <p class="mode-text-info" id="modeTextInfo"></p>
+                        </div>
+                        
+                    </div>
+                    <div class="mode-toggle-box" id="modeToggleContainer">
+                        <div class="mode-toggle-switch"></div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
     </main>
  
     <script type="module" src="javascript/auth.js"></script>

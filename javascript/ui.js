@@ -1,17 +1,43 @@
     
     // BODY DOM
     const overlay = document.getElementById("modalOverlay");
+    const body = document.querySelector('body');
     
+    // LOGIN DOM
+    const alreadyHaveAnAccount = document.getElementById('showLoginSection');
+    const loginBackBtn = document.getElementById('loginSectionBackBtn');
+
+    // REGISTRATION DOM
+    const dontHaveAnAccount = document.getElementById('showRegistrationSection');
+    const registerBackBtn = document.getElementById('registrationSectionBackBtn');
+
+    // FORGOT PASSWORD DOM
+    const forgotPassword = document.getElementById('forgotPasswordSection');
+    const forgotPasswordBackBtn = document.getElementById('forgotPasswordBackBtn');
+
+    // RESET PASSWORD DOM
+    const resetPassword = document.getElementById('resetPasswordSection');
+    const resetPasswordBackBtn = document.getElementById('resetPasswordBackBtn');
 
     // APP HEADER DOM
     const appHeaderInfo = document.querySelector('.app-header-info');
     const appHeaderText = document.querySelector('.app-header-text');
+    const headerInfoLeft = document.querySelector('.header-info-left');
+    const appHeader = document.querySelector('.app-header')
+    const hamburgerBtn = document.getElementById('hamburgerIcon');
 
     // SIDEBAR DOM
     const sidebar = document.querySelector(".sidebar");
     const toggle = document.querySelector('.toggle');
+    const dashboardLink = document.getElementById('dashboardLink');
+    const profileLink = document.getElementById('profileLink');
+    const courseLink = document.getElementById('courseLink');
+    const assignmentLink = document.getElementById('assignmentLink');
+    const settingsLink = document.getElementById('settingsLink');
 
-    
+    toggle.addEventListener('click', () => {
+      sidebar.classList.toggle('close');
+    })
 
 // STARTER FUNCTIONS DECLARATION
 
@@ -24,6 +50,20 @@ function showSection(sectionClass) {
     const sectionToShow = document.querySelector(`.${sectionClass}`);
     if (sectionToShow)
         sectionToShow.style.display = "block";
+
+     const authPages = [
+        "welcome-section",
+        "login-section",
+        "registration-section",
+        "forgot-password-section",
+        "reset-password-section"
+    ];
+
+    const isAuthPage = authPages.includes(sectionClass);
+
+    appHeader.style.display = isAuthPage ? "none" : "flex";
+
+    sidebar.classList.toggle("hidden", isAuthPage);
 }
 
 // Function to show landing page
@@ -36,39 +76,50 @@ function showRegistrationSection() {
     showSection("registration-section");
     document.querySelector(".registration-section").style.display = "flex";
 }
+dontHaveAnAccount.addEventListener('click', showRegistrationSection);
 
 // Function to show login form
 function showLoginSection() {
     showSection("login-section");
     document.querySelector(".login-section").style.display = "flex";
 }
+alreadyHaveAnAccount.addEventListener('click', showLoginSection);
 
 // Function to show forgot password
 function showForgotPasswordSection() {
     showSection("forgot-password-section");
     document.querySelector(".forgot-password-section").style.display = "flex";
 }
+forgotPassword.addEventListener('click', showForgotPasswordSection)
 
 // Function to show reset password
 function showResetPasswordSection() {
     showSection("reset-password-section");
     document.querySelector(".reset-password-section").style.display = "flex";
 }
+resetPassword.addEventListener('click', showResetPasswordSection);
 
 // BACK BUTTON HANDLERS
 
-function registrationBackBtn() {
+function registrationBackBtnF() {
     showLandingPage();
 }
-function loginBackBtn() {
+registerBackBtn.addEventListener('click', registrationBackBtnF)
+
+function loginBackBtnF() {
     showLandingPage();
 }
-function forgotPasswordBackBtn() {
+loginBackBtn.addEventListener('click', loginBackBtnF)
+
+function forgotPasswordBackBtnF() {
     showLoginSection();
 }
-function resetPasswordBackBtn() {
+forgotPasswordBackBtn.addEventListener('click', forgotPasswordBackBtnF)
+
+function resetPasswordBackBtnF() {
     showLoginSection();
 }
+resetPasswordBackBtn.addEventListener('click', resetPasswordBackBtnF)
 
 // function to show the content to the app header at the right
 function showHeaderLeft(headerLeft) {
@@ -81,24 +132,27 @@ function showHeaderLeft(headerLeft) {
         headerInfoToShow.style.display = "inline-block";
 }
 
-// FUNCTION TO SHOW SIDEBAR
-function showSidebar(){
-    document.querySelector(".app-header").style.display = "flex";
-    sidebar.style.display = "inline-block";
-    toggle.addEventListener('click', function(){
-        sidebar.classList.toggle('close')
-    })
-}
+// SIDEBAR LINKS
+
+dashboardLink.addEventListener('click', showDashboard);
+profileLink.addEventListener('click', showProfile);
+courseLink.addEventListener('click', showCourse);
+assignmentLink.addEventListener('click', showAssignmentSection)
+settingsLink.addEventListener('click', showSettingsSection);
 
 // DASHBOARD SECTION
 
 
 // DASHBOARD DOM
 const appHeaderImage = document.getElementById('header-profile-picture');
+let totalCourse = document.getElementById('totalCourse');
+let totalAssignmentDue = document.getElementById('totalAssignmentDue');
+// let totalAttendance = document.getElementById('totalAttendance');
+// let currentGPA = document.getElementById('currentGPA');
+
 // function to show dashboard
 function showDashboard() {
     showSection("dashboard-section");
-    showSidebar();
     showHeaderLeft('user-img')
     appHeaderInfo.textContent = 'Dashboard';
     let usernameDisplay = localStorage.getItem('currentUser');
@@ -109,28 +163,57 @@ function showDashboard() {
         appHeaderText.textContent = 'welcome back Student';
     }
 
+    totalCourses();
+    totalAssignmentDueCount();
+
 }
+function showHamburger() {
+    if(sidebar.classList.contains('open')){
+    hamburgerBtn.classList.add('bx-x');
+    hamburgerBtn.classList.remove('bx-menu')
+  }
+  else{
+    hamburgerBtn.classList.add('bx-menu')
+    hamburgerBtn.classList.remove('bx-x')
+  }
+}
+hamburgerBtn.addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+  sidebar.classList.remove('close');
+  showHamburger();
+});
+
+document.querySelectorAll(".sidebar li").forEach(link => {
+    link.addEventListener("click", () => {
+        sidebar.classList.remove("open");
+        showHamburger();
+    });
+});
+
+
 
 
 // PROFILE SECTION
 
 
 // PROFILE DOM
-    const fullName = document.getElementById('fullName');
-    const email = document.getElementById('email');
-    const bio = document.getElementById('bio');
-    const editBtn = document.getElementById('editBtn');
-    const edit = document.querySelector('.edit');
-    const camera = document.querySelector('.bx-camera');
-    let username = document.querySelector('.username');
-    let useremail = document.querySelector('.useremail');
-    const originalInput = {
-        fullname: '',
-        email: '',
-        bio: '',
-    }
-    const imageInput = document.getElementById('image-upload-input');
-    const profilePicDisplay = document.getElementById('profile-pic-display');
+const fullName = document.getElementById('fullName');
+const email = document.getElementById('email');
+const bio = document.getElementById('bio');
+const editProfileBtn = document.getElementById('editProfileBtn');
+const saveProfileChangesBtn = document.getElementById('saveProfileChanges');
+const cancelProfileChangesBtn = document.getElementById('cancelProfileChanges');
+const edit = document.querySelector('.edit');
+const camera = document.querySelector('.bx-camera');
+let username = document.querySelector('.username');
+let useremail = document.querySelector('.useremail');
+const originalInput = {
+    fullname: '',
+    email: '',
+    bio: '',
+}
+const imageInput = document.getElementById('image-upload-input');
+const profilePicDisplay = document.getElementById('profile-pic-display');
 
 
 // ALL PROFILE FUNCTIONS
@@ -146,24 +229,30 @@ function showProfile(){
 
 }
 
+
+editProfileBtn.addEventListener('click', editProfileBtnF);
+saveProfileChangesBtn.addEventListener('click', saveProfileChangesBtnF);
+cancelProfileChangesBtn.addEventListener('click', cancelProfileChangesBtnF);
+
+
 // function for edit profile
-function editProfileBtn(){
+function editProfileBtnF(){
     originalInput.fullname = fullName.value;
     originalInput.email = email.value;
     originalInput.bio = bio.value;
     edit.style.display = 'grid';
     camera.style.display = 'block'
-    editBtn.style.display = 'none';
+    editProfileBtn.style.display = 'none';
     fullName.removeAttribute('disabled')
     email.removeAttribute('disabled')
     bio.removeAttribute('disabled')
 }
 
 // function to save editted profile
-function saveChangesBtn(){
+function saveProfileChangesBtnF(){
     edit.style.display = 'none';
     camera.style.display = 'none';
-    editBtn.style.display = 'block'
+    editProfileBtn.style.display = 'block'
     fullName.setAttribute('disabled','disabled')
     email.setAttribute('disabled','disabled')
     bio.setAttribute('disabled','disabled')
@@ -172,13 +261,13 @@ function saveChangesBtn(){
 }
 
 // function to cancel edit profile
-function cancelChangesBtn(){
+function cancelProfileChangesBtnF(){
     fullName.value = originalInput.fullname;
     email.value = originalInput.email;
     bio.value = originalInput.bio;
     edit.style.display = 'none';
     camera.style.display = 'none'
-    editBtn.style.display = 'block'
+    editProfileBtn.style.display = 'block'
     fullName.setAttribute('disabled','disabled')
     email.setAttribute('disabled','disabled')
     bio.setAttribute('disabled','disabled')
@@ -230,7 +319,7 @@ imageInput.addEventListener('change', function(e) {
 function showCourse(){
     showSection('course-section');
     showHeaderLeft('add-course-btn');
-    appHeaderInfo.textContent = 'Course Management';
+    appHeaderInfo.textContent = 'Courses';
     appHeaderText.innerHTML = 'view and manage your courses';   
 }
 
@@ -364,6 +453,14 @@ function closeCourseModal() {
   overlay.style.display = "none";
 }
 
+function totalCourses(){
+  const courses = Array.from(
+    coursesContainer.querySelectorAll(".course-info")
+  );
+
+  totalCourse.textContent = courses.length;
+}
+
 
 // ALL COURSES MANIPULATION AND CONTROL CODES
 addCourseBtn.addEventListener("click", () => {
@@ -434,7 +531,6 @@ sortSelect.addEventListener('change', handleSort);
 
 // ASSIGNMENT DOM
 
-const assignmentLink = document.getElementById('assignmentLink');
 const addAssignmentBtn = document.querySelector('.add-assignment-btn')
 const assignmentModal = document.getElementById('addAssignmentModal')
 const cancelAssignmentBtn = document.getElementById('cancelAssignment');
@@ -475,21 +571,23 @@ function createNewAssignment() {
   }
 
     const assignmentInfo = document.createElement("div");
-    assignmentInfo.className = "assignment-info";
+    assignmentInfo.className = "assignment-info-container";
 
     assignmentInfo.innerHTML = `
-      <div class="assignment-info-left">
-        <i class="bx bx-hourglass"></i>
-        <div>
-          <h3>${title}</h3>
-          <p data-course="${course.toLowerCase()}">${course}</p>
-          <p>Due: ${due}</p>
+      <div class="assignment-info">
+        <div class="assignment-info-left">
+          <i class="bx bx-hourglass"></i>
+          <div>
+            <h3>${title}</h3>
+            <p data-course="${course.toLowerCase()}">${course}</p>
+            <p>Due: ${due}</p>
+          </div>
         </div>
-      </div>
-      <div class="assignment-info-submit">
-        <i class='bx  bx-arrow-from-bottom'></i> 
-        <p>Submit</p>
-      </div>     
+        <div class="assignment-info-submit">
+          <i class='bx  bx-arrow-from-bottom'></i> 
+          <p>Submit</p>
+        </div> 
+      </div>    
     `;
 
     assignmentContainer.appendChild(assignmentInfo);
@@ -520,10 +618,10 @@ function markAssignmentAsSubmitted(assignmentInfo) {
   submitText.textContent = "Submitted";
 
   const submitIcon = submitBtn.querySelector("i");
-  submitIcon.className = "bx bx-check";
+  submitIcon.style.display = "none";
 
   // 3. Add submission time info
-  const assignmentDetails = assignmentInfo.querySelector('.assignment-info-left div')
+ // const assignmentDetails = assignmentInfo.querySelector('.assignment-info-container')
   const submittedInfo = document.createElement("div");
   submittedInfo.className = "assignment-submitted-info";
 
@@ -536,7 +634,7 @@ function markAssignmentAsSubmitted(assignmentInfo) {
     <p><strong>Time:</strong> ${formattedTime}</p>
   `;
 
-  assignmentDetails.appendChild(submittedInfo);
+  assignmentInfo.appendChild(submittedInfo);
 }
 
 function validateSubmissionFile(file) {
@@ -600,7 +698,7 @@ function openSubmitModal() {
 
 function applyAssignmentCourseFilter() {
   const filterValue = assignmentCourseFilter.value;
-  const assignments = document.querySelectorAll(".assignment-info");
+  const assignments = document.querySelectorAll(".assignment-info-container");
 
   assignments.forEach(assignment => {
     const courseValue = assignment.querySelector("[data-course]").dataset.course;
@@ -613,15 +711,29 @@ function applyAssignmentCourseFilter() {
   });
 }
 
+function totalAssignmentDueCount(){
+  const assignments = assignmentContainer.querySelectorAll(".assignment-info-container");
+  let count = 0;
+
+  assignments.forEach(assignment => {
+    if(!assignment.classList.contains("submitted")){
+      count++
+    }
+  })
+  totalAssignmentDue.textContent = count;
+  
+}
+
 
 
 // ASSIGNMENT  MANIPULATION
-assignmentLink.addEventListener('click', function(){
-  showSection('assignment-section');
-  showHeaderLeft('add-assignment-btn');
-  appHeaderInfo.textContent = 'Assignments';
-  appHeaderText.innerHTML = 'Track and submit your assignments';
-})
+
+  function showAssignmentSection(){
+    showSection('assignment-section');
+    showHeaderLeft('add-assignment-btn');
+    appHeaderInfo.textContent = 'Assignments';
+    appHeaderText.innerHTML = 'Track and submit your assignments';
+  }
 
 addAssignmentBtn.addEventListener('click', function(){
   overlay.style.display = 'block';
@@ -644,7 +756,7 @@ assignmentContainer.addEventListener("click", function (e) {
   const submitBtn = e.target.closest(".assignment-info-submit");
   if (!submitBtn) return;
 
-  const assignmentInfo = submitBtn.closest(".assignment-info");
+  const assignmentInfo = submitBtn.closest(".assignment-info-container");
   if (!assignmentInfo) return;
 
   activeAssignment = assignmentInfo;
@@ -673,3 +785,39 @@ fileInput.addEventListener("change", () => {
   showSelectedFile(file);
 });
 assignmentCourseFilter.addEventListener("change", applyAssignmentCourseFilter);
+
+
+// SETTINGS SECTION
+
+const modeIcon = document.getElementById('modeIcon');
+const modeText = document.getElementById('modeText');
+const modeTextInfo = document.getElementById('modeTextInfo');
+const modeToggleContainer = document.getElementById('modeToggleContainer');
+
+function showSettingsSection(){
+    showSection('settings-section');
+    headerInfoLeft.innerHTML = '';
+    appHeaderInfo.textContent = 'Settings';
+    appHeaderText.innerHTML = 'Manage your preferences';
+    modeTextF();
+
+}
+function modeTextF(){
+    if(modeToggleContainer.classList.contains('active')){
+    modeText.textContent = 'Light Mode';
+    modeTextInfo.textContent = 'Dark theme enabled';
+    modeIcon.classList.add('bx-moon');
+    modeIcon.classList.remove('bx-sun');
+  }
+  else{
+    modeText.textContent = 'Dark Mode';
+    modeTextInfo.textContent = 'Light theme enabled';
+    modeIcon.classList.add('bx-sun');
+    modeIcon.classList.remove('bx-moon');
+  }
+}
+modeToggleContainer.addEventListener('click', () =>{
+  modeToggleContainer.classList.toggle('active');
+  body.classList.toggle('dark');
+  modeTextF();
+})

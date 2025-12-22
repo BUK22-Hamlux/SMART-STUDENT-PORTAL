@@ -12,15 +12,34 @@
     --sidebar-color: #fafafa;
     --background-color: #f5f3f3;
     --text-color: #474646;
-    --hover-color1: rgb(223, 220, 220);
+    --shadow-color: rgb(233, 233, 233);
+    --shadow-color-hover: rgb(217, 219, 221);
+    --hover-color1: rgb(230, 223, 223);
     --hover-color2: rgb(202, 200, 200);
     --success-color2: #DFF7E7;
     --warning-color: #FFE6CC;
-
-
+    
     /* --FONT VARIABLE-- */
 
     --font-primary: 'Poppins', sans-serif;
+    --font-size: clamp(1rem, 2.5vw, 1rem);
+
+    --box-shadow: 1px 2px 3px var(--shadow-color);
+    --box-shadow-hover: 2px 3px 5px var(--shadow-color-hover);
+
+    --padding10: min(2%, 10px);
+    --padding20: min(5%, 20px);
+    --padding30: min(7%, 30px);
+    --padding40: min(10%, 40px);
+}
+body.dark{
+    --shadow-color: rgb(3, 14, 37);
+    --shadow-color-hover: rgb(8, 23, 56);
+    --sidebar-color: #2A3545;
+    --background-color: #192333;
+    --text-color: white;
+    --box-shadow: 1px 2px 3px var(--shadow-color);
+    --box-shadow-hover: 2px 3px 5px var(--shadow-color-hover);
 }
 
 /* TAG STYLES */
@@ -28,19 +47,20 @@
 *{
     box-sizing: border-box;
     font-family: var(--font-primary);
+    font-size: var(--font-size);
 }
 body {
     margin: 0;
     padding: 0;
     font-family: var(--font-primary);
     display: flex;
-    height: 100vh;
     color: var(--text-color);
+    background: var(--background-color);
 }
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     font-weight: normal;
-    color: black;
+    color: var(--text-color);
 }
 p{
     margin: 0;
@@ -48,6 +68,7 @@ p{
 a{
     text-decoration: none;
 }
+
 
 /* GROUP STYLE */
 
@@ -59,11 +80,10 @@ a{
 }
 section.main-content{
     position: relative;
-    top: 70px;
-    padding: 40px 20px;
+    top: 60px;
+    padding: var(--padding40) var(--padding20);
     background: var(--background-color);
     width: calc(100% - 250px);
-    height: 100vh;
     left: 250px;
 }
 
@@ -75,9 +95,15 @@ section.main-content{
     width: calc(100% - 250px);
     left: 250px;
     background: var(--sidebar-color);
-    padding: min(5%, 20px);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    padding: var(--padding20);
+    box-shadow: var(--box-shadow);
     z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.app-header i{
+    font-size: 1.5rem;
     display: none;
 }
 .app-header .header-info{
@@ -112,12 +138,11 @@ section.main-content{
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: 100%;
     width: 250px;
     background: var(--sidebar-color);
     transition: all 0.3s ease;
     z-index: 100;
-    display: none;
 }
 .sidebar .text{
     font-size: 1rem;
@@ -127,9 +152,9 @@ section.main-content{
 }
 .sidebar header{
     position: relative;
-    padding: 25px 20px 10px 20px;
+    padding: var(--padding20);
 }
-.sidebar hr{
+.sidebar hr, .sidebar .menu-bar hr{
     border: 1px solid var(--hover-color1);
 }
 .sidebar .image-text{
@@ -173,7 +198,7 @@ section.main-content{
     transition: all 0.2s ease;
 }
 .sidebar .menu-bar{
-    padding: min(5%, 20px) ;
+    padding: var(--padding20);
 }
 .sidebar .menu-bar .menu{
     display: flex;
@@ -182,14 +207,14 @@ section.main-content{
 }
 .sidebar .menu-bar li{
     border-radius: 10px;
-    padding: 10px;
+    padding: var(--padding20);
     list-style: none;
     display: flex;
     align-items: center;
     transition: all 0.2s ease;
 }
 .sidebar .menu-bar li .icon{
-    font-size: 20px;
+    font-size: 1.5rem;
 }
 .sidebar li .icon{
     color: var(--text-color);
@@ -213,6 +238,9 @@ section.main-content{
 .sidebar.close{
     width: 88px;
 }
+.sidebar.close header{
+    padding: var(--padding40);
+}
 .sidebar.close header .toggle{
     transform: translateY(-50%) rotate(180deg);
 }
@@ -223,6 +251,7 @@ section.main-content{
 }
 .sidebar.close .menu-bar a{
     margin: auto;
+    padding: var(--padding20);
 }
 
 
@@ -236,7 +265,9 @@ section.main-content{
 
 
 .welcome-section{
-    padding: min(5vw, 40px);
+    padding: var(--padding20);
+    background: var(--background-color);
+    object-fit: contain;
 }
 .welcome-section header{
     display: flex;
@@ -253,15 +284,15 @@ section.main-content{
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: 50px;
-    align-items: center;
+    align-items: end;
 }
 .welcome-btn{
-    padding: 20px 30px;
+    padding: var(--padding20) var(--padding30);
     margin: 40px 10px 40px 0;
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
 }
 .register-btn{
     background-color: var(--primary-color);
@@ -273,7 +304,7 @@ section.main-content{
 .login-btn{
     background-color: white;
     color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    border: 1px solid var(--primary-color);
 }
 .login-btn:hover{
     background-color: #e6f0ff;
@@ -281,21 +312,22 @@ section.main-content{
 .welcome-features{
     display: flex;
     justify-content: space-around;
-    margin: 40px 0;
+    margin-top: 40px;
+    width: 100%;
 }
 .welcome-features img{
     width: 20px;
     filter: brightness(0) invert(1);
 }
 .welcome-items{
-    width: 100px;
+    width: fit-content;
     text-align: center;
 }
 .welcome-items div{
     width: 30px;
     height: 30px;
-    padding: 10px;
-    border-radius: 20px;
+    padding: var(--padding10);
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -311,13 +343,9 @@ section.main-content{
     background-color: var(--success-color);
 }
 .welcome-container .welcome-image{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background: var(--background-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
     border-radius: 20px;
-    padding-top: 50px;
 }
 
 
@@ -326,18 +354,19 @@ section.main-content{
 
 .registration-section{
     background: var(--background-color);
-    padding: min(5vw, 40px);
+    padding: var(--padding20);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .form-fieldset{
     border: none;
-    max-width: 500px;
-    padding: min(3vw, 20px) min(5vw, 40px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    padding: var(--padding10) var(--padding20);
+    box-shadow: var(--box-shadow);
     border-radius: 20px;
-    background-color: white;
+    background-color: var(--sidebar-color);
     text-align: left;
 }
 .form-fieldset legend, .form-fieldset p, .form-fieldset a{
@@ -346,7 +375,7 @@ section.main-content{
 .form{
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 .form-fieldset p{
     margin-top: -10px;
@@ -360,11 +389,12 @@ section.main-content{
     text-align: left;
 }
 .form-fieldset input{
-    padding: 20px;
+    padding: var(--padding10);
     border: 1px solid #ccc;
     border-radius: 10px;
     font-size: 1rem;
-    max-width: 500px;
+    width: 100%;
+    max-width: 800px;
     box-sizing: border-box;
     margin-bottom: 10px;
 
@@ -372,30 +402,27 @@ section.main-content{
 .form-fieldset input:focus{
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 5px rgba(45, 111, 251, 0.5);
+    box-shadow: var(--box-shadow);
 }
 .form-fieldset button{
     margin-top: 20px;
-    padding: 15px;
+    padding: var(--padding10);
     background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    max-width: 500px;
+    max-width: 800px;
+    width: 100%;
     box-sizing: border-box;
 }
-#registration-back-btn, #login-back-btn, #forgot-back-btn, #reset-back-btn{
+#registrationSectionBackBtn, #loginSectionBackBtn, #forgotPasswordBackBtn, #resetPasswordBackBtn{
     background-color: transparent;
     border: none;
     text-align: left;
     color: var(--text-color);
     margin-bottom: 20px;
     width: fit-content;
-    padding: 0;
-}
-#form-back-btn:hover{
-    color: var(--primary-color);
 }
 .form-fieldset button:hover{
     background-color: #1a4ed8;
@@ -406,11 +433,12 @@ section.main-content{
 
 
 .login-section{
-    background: var(--background-color);
-    padding: min(5vw, 40px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: var(--padding20);
+    height: 100vh;
+}
+.login-section fieldset{
+    height: fit-content;
+    margin: auto;
 }
 .remember-me{
     display: flex;
@@ -445,14 +473,17 @@ section.main-content{
 
 .forgot-password-section{
     background: var(--background-color);
-    padding: min(5vw, 40px);
+    width: 100%;
+    height: 100vh;
+    padding: var(--padding20);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .reset-password-section{
     background: var(--background-color);
-    padding: min(5vw, 40px);
+    padding: var(--padding20);
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -483,31 +514,31 @@ section.main-content{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    padding: var(--padding20);
     background: var(--sidebar-color);
     border-radius: 10px;
 }
 .dashboard .features-cards .icon-container{
-    background: var(--linear-primary);
-    padding: 10px;
-    border-radius: 10px;
+    background: var(--success-color);
+    padding: var(--padding10);
+    border-radius: 5px;
     display: flex;
     align-items: center;
 
 }
 .dashboard .features-cards .icon-container .icon{
     font-size: 1.5rem;
-    color: var(--primary-color);
+    color: white;
 }
 .dashboard .updates{
     margin: 40px auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit ,minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit ,minmax(300px, 1fr));
     gap: 20px;
 }
 .dashboard .updates .updates-card{
     background: var(--sidebar-color);
-    padding: 20px;
+    padding: var(--padding20);
     border-radius: 20px;
 }
 .dashboard .updates .info{
@@ -529,12 +560,12 @@ section.main-content{
     align-items: start;
     gap: 15px;
     margin-bottom: 20px;
-    padding: 20px;
+    padding: var(--padding20);
     background: var(--background-color);
     border-radius: 10px;
 }
 .dashboard .updates .list .list-box .bx{
-    padding: 10px;
+    padding: var(--padding10);
     border-radius: 10px;
     color: white;
     background: var(--primary-color);
@@ -560,21 +591,17 @@ section.main-content{
 
 /* PROFILE SECTION */
 
-.profile-section{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
 .profile-section article{
-    border-radius: 20px;
+    border-radius: 10px;
     background: var(--sidebar-color);
-    padding: 20px;
+    padding: var(--padding20);
 }
 .profile-section .profile-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
+    margin-bottom: 20px;
 }
 .profile-container .info{
     display: flex;
@@ -596,7 +623,7 @@ section.main-content{
     right: 0;
     top: 60%;
     font-size: 1rem;
-    padding: 5px;
+    padding: var(--padding10);
     background: var(--primary-color);
     border-radius: 10px;
     color: white;
@@ -618,13 +645,15 @@ section.main-content{
 .profile-container .edit-profile input, 
 .profile-container .edit-profile textarea
 {
-    padding: 15px;
+    padding: var(--padding10);
     width: 100%;
     font-size: 1rem;
     border: 2px solid var(--hover-color1);
     border-radius: 10px;
     margin-bottom: 10px;
     resize: none;
+    color: var(--text-color);
+    background: var(--sidebar-color);
 }
 .profile-container .edit-profile input{
     padding-left: 50px;
@@ -639,13 +668,13 @@ section.main-content{
     font-size: 1.5rem;
     color: var(--hover-color1);
 }
-.profile-container .edit-profile #editBtn{
-    padding: 15px;
+.profile-container .edit-profile #editProfileBtn{
+    padding: var(--padding10);
     background: var(--primary-color);
     border: none;
     border-radius: 10px;
     font-size: 1rem;
-    color: var(--background-color);
+    color: white;
     transition: all 0.5s ease;
 }
 .edit-profile .edit{
@@ -657,66 +686,67 @@ section.main-content{
     display: none;
 }
 .edit-profile .edit button{
-    padding: 15px;
+    padding: var(--padding10);
     border-radius: 10px;
     border: none;
     font-size: 1rem;
 }
-.edit-profile .edit #saveChanges{
-    color: var(--sidebar-color);
+.edit-profile .edit #saveProfileChanges{
+    color: white;
     background: var(--primary-color);
 }
 .academic-info .academic-container{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     border-radius: 10px;
-    padding: 20px;
+    padding: var(--padding10);
 }
 .academic-container .academic-box{
     display: flex;
     gap: 10px;
     align-items: center;
     background: var(--background-color);
-    padding: 20px;
+    padding: var(--padding20);
     border-radius: 10px;
+    width: 100%;
 }
 .academic-container .bx{
-    padding: 10px;
+    padding: var(--padding10);
     background: var(--success-color);
     border-radius: 10px;
 }
 
 /* COURSE SECTION STYLE */
 
-.course-section{
-    position: relative;
-}
-
 .filter-sort-container{
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 40px;
     background: var(--sidebar-color);
     border-radius: 10px;
-    padding: 20px;
-    box-shadow: 2px 3px 5px var(--hover-color1);
+    padding: var(--padding20);
+    box-shadow: var(--box-shadow);
     margin-bottom: 20px;
 }
 .filter-sort select{
-    padding: 10px;
+    width: 100%;
+    padding: var(--padding10);
     border-radius: 10px;
     font-size: 1rem;
     color: var(--text-color);
-    border: 1px solid var(--hover-color1);    
+    border: 1px solid var(--hover-color1);  
+    background: var(--sidebar-color);  
 }
 .add-course-btn{
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: var(--sidebar-color);
+    padding: 5px;
+    color: white;
     background: var(--primary-color);
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
+    height: fit-content;
+
 }
 
 .course-section .courses{
@@ -730,12 +760,12 @@ section.main-content{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 20px;
-    box-shadow: 1px 3px 5px var(--hover-color1);
+    padding: var(--padding20);
+    box-shadow: var(--box-shadow);
     transition: all 0.3s ease;
 }
 .course-info:hover{
-    box-shadow: 2px 10px 20px var(--hover-color1);
+    box-shadow: var(--box-shadow-hover);
 }
 .courses .course-info div{
     display: flex;
@@ -773,35 +803,36 @@ section.main-content{
   transform: translate(-50%, -50%);
   width: 50%;
   min-width: 300px;
-  background: #fff;
+  background: var(--background-color);
   border-radius: 12px;
-  padding: 24px;
+  padding: var(--padding20);
   display: none;
-  z-index: 1001; /* must be above overlay */
+  z-index: 1001;
 }
 
 /* Fieldset styling */
 .modal fieldset {
   border: none;
-  padding: 0;
 }
 
 .modal label {
   display: block;
   margin-top: 12px;
   font-weight: 500;
+  color: var(--text-color);
 }
 
 .modal input,
 .modal select {
   width: 100%;
-  padding: 10px;
+  padding: var(--padding10);
   margin-top: 6px;
   border-radius: 8px;
   border: 1px solid var(--hover-color1);
+  background: var(--sidebar-color);
+  color: var(--text-color);
 }
 
-/* Buttons */
 .modal-actions {
   display: flex;
   gap: 10px;
@@ -809,11 +840,10 @@ section.main-content{
   margin-top: 20px;
 }
 .modal-actions button{
-    padding: 10px;
+    padding: var(--padding10);
     font-size: 1rem;
     border-radius: 10px;
     border: none;
-    background: var(--sidebar-color);
     width: 100%;
 }
 .modal-actions #saveCourse{
@@ -821,7 +851,7 @@ section.main-content{
     color: white;
 }
 .modal-actions #cancelCourse{
-        background: var(--sidebar-color);
+    background: var(--sidebar-color);
     color: var(--text-color);
 }
 #addCourseErrorMessage{
@@ -830,42 +860,55 @@ section.main-content{
 }
 
 /* ASSIGNMENT STYLE */
-
 .add-assignment-btn{
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: var(--sidebar-color);
+    padding: 5px;
+    color: white;
     background: var(--primary-color);
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
+    height: fit-content;
 }
 .assignment-filter-container{
     background: var(--sidebar-color);
     border-radius: 10px;
-    padding: 20px;
-    box-shadow: 2px 3px 5px var(--hover-color1);
+    padding: var(--padding20);
+    box-shadow: var(--box-shadow);
     margin-bottom: 20px;
 }
 .assignment-filter-container select{
-    padding: 10px;
+    padding: var(--padding10);
     border-radius: 10px;
     font-size: 1rem;
     color: var(--text-color);
     border: 1px solid var(--hover-color1);    
+    background: var(--sidebar-color);
 }
 .assignments{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
+.assignment-info-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: red;
+    padding: var(--padding20);
+    border-radius: 10px;
+    background: var(--sidebar-color);
+    box-shadow: var(--box-shadow);
+}
 .assignment-info{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+}
+.assignment-submitted-info{
+    background: var(--success-color);
     border-radius: 10px;
-    background: var(--sidebar-color);
-    box-shadow: 2px 3px 5px var(--hover-color1);
+    padding: var(--padding10);
+    color: white
+    ;
 }
 .assignment-info-left{
     font-size: 0.8rem;
@@ -877,7 +920,7 @@ section.main-content{
     gap: 10px;
 }
 .assignment-info-left .bx{
-    padding: 10px;
+    padding: var(--padding10);
     background: var(--warning-color);
     border-radius: 10px;
     width: fit-content;
@@ -890,10 +933,14 @@ section.main-content{
     background: var(--primary-color);
     color: white;
 }
+#cancelAssignment{
+    background-color: var(--sidebar-color);
+    color: var(--text-color);
+}
 .assignment-info-submit{
     align-items: center;
     background: var(--primary-color);
-    padding: 10px 15px;
+    padding: var(--padding10);
     border-radius: 10px;
     margin: 0;
     height: fit-content;
@@ -902,15 +949,18 @@ section.main-content{
 
 #submitAssignmentModal textarea{
     width: 100%;
+    padding: var(--padding10);
     border: 1px solid var(--hover-color1);
     border-radius: 10px;
+    background: var(--sidebar-color);
+    color: var(--text-color);
 }
 #submitAssignmentModal .file-upload-container{
     text-align: center;
     width: 100%;
     border: 2px dashed var(--hover-color1);
     border-radius: 10px;
-    padding: 10px;
+    padding: var(--padding10);
     color: var(--hover-color2);
 }
 #submitAssignmentModal .file-upload-container .bx{
@@ -922,4 +972,117 @@ section.main-content{
 #submitAssignmentModal .modal-actions #submitAssignmentUpload{
     background: var(--primary-color);
     color: white;
+}
+#submitAssignmentModal .modal-actions #cancelAssignmentUpload{
+    background: var(--sidebar-color);
+    color: var(--text-color);
+}
+
+
+/* SETTINGS STYLES */
+
+.settings-section .appearance-mode-container{
+    background-color: var(--sidebar-color);
+    padding: var(--padding20);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.appearance-mode-container h3{
+    font-size: 0.9rem;
+}
+.appearance-mode-container .mode-box{
+    padding: var(--padding20);
+    background-color: var(--background-color);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mode-box .mode-text-icon{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.mode-box .mode-text-icon i{
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+.mode-box .mode-text-icon .bx-sun{
+    background: rgb(255, 250, 185);
+    color: var(--secondary-color);
+}
+.mode-box .mode-text-icon .bx-moon{
+    background: rgb(34, 44, 136);
+    color: var(--primary-color);
+}
+.mode-box .mode-text-icon p{
+    font-size: 0.7rem;
+}
+.mode-box .mode-toggle-box{
+    background-color: #cecfcf;
+    padding: 5px;
+    border-radius: 25px;
+    width: 50px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    
+}
+.mode-toggle-box .mode-toggle-switch{
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    
+}
+.mode-toggle-box.active{
+    background: var(--primary-color);
+}
+.mode-toggle-box.active .mode-toggle-switch{
+    transform: translateX(100%)
+}
+
+@media (max-width: 768px){
+    .sidebar.hidden{
+        display: none;
+    } 
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        display: block;
+        z-index: 1000;
+    }
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    .app-header{
+        width: 100%;
+        left: 0;
+        z-index: 1001;
+    }
+    .app-header i{
+        display: inline-block;
+    }
+    section.main-content{
+        width: 100%;
+        left: 0;
+    }
+    .sidebar.close ~ .app-header, 
+    .sidebar.close ~ section.main-content
+    {
+        left: 0;
+        width: 100%;
+    }
+    .welcome-container .welcome-image{
+        display: none;
+    }
+    .welcome-container{
+        display: inline-block;
+        padding: 10px;
+    }
 }
