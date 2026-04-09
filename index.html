@@ -1,711 +1,817 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Student Portal</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="modalOverlay" class="overlay"></div>
 
-        <!-- Overlay -->
-    <div id="modalOverlay"></div>
-
+    <!-- TOAST CONTAINER -->
+    <div id="toastContainer" class="toast-container"></div>
 
     <main id="app">
-
-             <!-- SIDEBAR SECTION -->
-
-        <nav class="sidebar close">
-
-            <header>
-                    
-                <div class="image-text">
-                    <span class="image">
-                        <img src="css/images/graduation-hat.png" alt="Logo" class="logo">
-                    </span>
-                    <div class="text header-text">
-                        <span class="name">Student Portal</span>
-                        <span class="caption">Academic Hub</span>
-                    </div>
-                </div>
-
-                <i class='bx  bx-chevron-right toggle'></i> 
-
-            </header>
-
-            <hr>
-
-            <div class="menu-bar">
-                <div class="menu">
-
-                    <li class="nav-link" id="dashboardLink">
-                        <a href="#">
-                            <i class='bx  bx-home-alt icon'></i> 
-                            <span class="text nav-text">Dashboard</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link" id="profileLink">
-                        <a href="#">
-                            <i class='bx  bx-user icon'></i> 
-                            <span class="text nav-text">Profile</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link" id="courseLink">
-                        <a href="#">
-                            <i class='bx  bx-book-open icon'></i> 
-                            <span class="text nav-text">Courses</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link" id="assignmentLink">
-                        <a href="#">
-                            <i class='bx  bx-book-alt icon'></i>   
-                            <span class="text nav-text">Assignments</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx  bx-key icon'></i> 
-                            <span class="text nav-text">Attendance</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx  bx-medal icon'></i>  
-                            <span class="text nav-text">Report Card</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link" id="settingsLink">
-                        <a href="#">
-                            <i class='bx  bx-cog icon'></i> 
-                            <span class="text nav-text">Settings</span>
-                        </a>
-                    </li>
-
-                    <hr>
-
-                </div>
-
-                <div class="footer-bar">
-                    <li>
-                        <a>
-                            <i class='bx  bx-log-out icon'></i>  
-                            <span class="text nav-text">Logout</span>
-                        </a>
-                    </li>
-                </div>
+      <!-- SIDEBAR -->
+      <nav class="sidebar close">
+        <header>
+          <div class="image-text">
+            <span class="image">
+              <img
+                src="css/images/graduation-hat.png"
+                alt="Logo"
+                class="logo"
+              />
+            </span>
+            <div class="text header-text">
+              <span class="name">Student Portal</span>
+              <span class="caption">Academic Hub</span>
             </div>
-        </nav>
-
-        <header class="app-header">
-
-            <i class="bx bx-menu" id="hamburgerIcon"></i>
-            <div class="header-info">
-                <div class="user">
-                    <h3 class="app-header-info">Smart Student Portal</h3>
-                    <p class="app-header-text"></p>
-                </div>
-                <div class="user-img header-info-left">
-                    <img src="css/images/user.png" alt="profile-picture" id="header-profile-picture">
-                </div>
-                <div class="add-course-btn header-info-left">+ Add</div>
-                <div class="add-assignment-btn header-info-left">+ Add</div>
-            </div>
-                
+          </div>
+          <i class="bx bx-chevron-right toggle"></i>
         </header>
-
-
-        <section class="welcome-section">
-            
-            <header>
-                <img src="css/images/graduate.png" alt="Logo" class="logo">
-                <h4 style="color: var(--primary-color);">Smart Student Portal</h4>
-            </header>
-
-            <div class="welcome-container">
-                <article class="welcome-text">
-                    <h3>Smart Student Portal</h3>
-                    <p>
-                        Your all-in-one solution for managing your academic life efficiently and effectively.
-                        Access your features-cards report-card, assignments, attendance, and report cards all in one place.
-                    </p>
-                    <button class="register-btn welcome-btn">Register</button>
-                    <button class="login-btn welcome-btn">Login</button>
-                    <div class="welcome-features">
-                        <div class="welcome-items item1">
-                            <div class=""><img src="css/images/book.png" alt="Logo" class="logo"></div>
-                            <p>Course Management</p>
-                        </div>
-                        <div class="welcome-items item2">
-                            <div><img src="css/images/user.png" alt="Logo" class="logo"></div>
-                            <p>Track Attendance</p>
-                        </div>
-                        <div class="welcome-items item3">
-                            <div><img src="css/images/graduate.png" alt="Logo" class="logo"></div>
-                            <p>Monitor Progress</p>
-                        </div>
-                    </div>
-                </article>
-
-                <div class="welcome-image">
-                    <img src="css/images/Student.png" alt="Logo" class="logo">
-                </div>
-                
-            </div>
-
-        </section>
-
-
-        <!-- REGISTRATION SECTION -->
-
-
-        <section class="registration-section">
-
-            <fieldset class="form-fieldset">
-            
-                <form class="registration-form form" action="">
-
-                    <button id="registrationSectionBackBtn">Back</button>
-                    <legend>Create Account</legend>
-                    <p>Join Smart Student Portal today.</p>
-
-                    <label for="reg-username">Username:</label>
-                    <input
-                     type="text"
-                     id="reg-username" 
-                     name="reg-username" 
-                     placeholder="choose a username" 
-                     required
-                    >
-                    
-                    <label for="reg-email">Email:</label>
-                    <input type="email"
-                     id="reg-email" 
-                     name="reg-email" 
-                     placeholder="you@example.com" 
-                     required
-                     >
-
-                    <label for="reg-password">Password:</label>
-                    <input
-                     type="password" 
-                     id="reg-password" 
-                     name="reg-password" 
-                     placeholder="create a password" 
-                     required>
-
-                    <label for="reg-confirm-password">Confirm Password:</label>
-                    <input
-                     type="password" 
-                     id="reg-confirm-password" 
-                     name="reg-confirm-password" 
-                     placeholder="confirm your password" 
-                     required>
-
-                    <button type="submit" class="register-btn">Register</button><br>
-                    <p>Already have an account? <a href="#" id="showLoginSection">Login</a></p>
-
-                </form>
-
-            </fieldset>
-
-        </section>
-
-
-        <!-- LOGIN SECTION -->
-
-
-        <section class="login-section" >
-            
-            <fieldset class="form-fieldset">
-            
-                <form class="login-form form" action="">
-
-                    <button id="loginSectionBackBtn">Back</button>
-                    <legend>Welcome Back</legend>
-                    <p>login to your account.</p>
-
-                    <label for="login-username">Username:</label>
-                    <input
-                     type="text" 
-                     id="login-username" 
-                     name="login-username" 
-                     placeholder="Enter your username" 
-                     required>
-
-                    <label for="login-password">Password:</label>
-                    <input
-                     type="password" 
-                     id="login-password" 
-                     name="login-password" 
-                     placeholder="Enter your password" 
-                     required>
-
-                    <div class="remember-me">
-                        <input type="checkbox" id="remember-me" name="remember-me">
-                        <label for="remember-me">Remember Me</label>   
-                    </div>
-                    
-                    <button type="submit">Login</button><br>
-
-                    <p>Don't have an account? <a href="#" id="showRegistrationSection">Register</a></p>
-                    <p class="forgot-password-link"><a href="#" id="forgotPasswordSection">Forgot Password?</a></p>
-                    
-                </form>
-
-            </fieldset>
-
-        </section>
-
-
-        <!-- FORGOT PASSWORD SECTION 1 -->
-
-            
-        <section class="forgot-password-section">
-            
-            <fieldset class="form-fieldset">
-            
-                <form class="forgot-password-form form" action="">
-
-                    <button id="forgotPasswordBackBtn">Back</button>
-                    <legend>Forgot Password</legend>
-                    <p>Enter your email to reset your password.</p>
-
-                    <label for="forgot-email">Email:</label>
-                    <input
-                     type="email" 
-                     id="forgot-email" 
-                     name="forgot-email" 
-                     placeholder="you@example.com" 
-                     required
-                     >
-
-                    <button id="resetPasswordSection" type="submit">Reset Password</button>
-
-                </form>
-
-            </fieldset>
-
-        </section>
-
-
-        <!-- RESET PASSWORD SECTION -->
-
-        <section class="reset-password-section">
-            
-            <fieldset class="form-fieldset">
-            
-                <form class="reset-password-form form" action="">
-
-                    <button id="resetPasswordBackBtn">Back</button>
-                    <legend>Reset Password</legend>
-                    <p>Enter your new password below.</p>
-
-                    <label for="new-password">New Password:</label>
-                    <input
-                     type="password" 
-                     id="new-password" 
-                     name="new-password" 
-                     placeholder="Enter new password" 
-                     required
-                     >
-
-                    <label for="confirm-new-password">Confirm New Password:</label>
-                    <input
-                     type="password" 
-                     id="confirm-new-password" 
-                     name="confirm-new-password" 
-                     placeholder="Confirm new password" 
-                     required
-                     >
-
-                    <button type="submit">Update Password</button>
-                </form>
-            </fieldset>
-        </section>
-
-
-        <!-- DASHBOARD SECTION -->
-
-
-        <section class="dashboard-section main-content dashboard">
-
-            <div class="features-container">
-
-                <div class="features-cards course-card">
-                    <div>
-                        <p>Total Coures</p>
-                        <span id="totalCourse"></span>
-                    </div>
-                    <div class="icon-container course-icon-container">
-                        <i class="bx bx-book-open icon"></i>
-                    </div>
-                </div>
-
-                <div class="features-cards assignment-card">
-                    <div>
-                        <p>Assignments Due</p>
-                        <span id="totalAssignmentDue"></span>
-                    </div>
-                    <div class="icon-container assignment-icon-container">
-                        <i class="bx bx-book-alt icon"></i>
-                    </div>
-                </div>
-
-                <div class="features-cards attendance-card">
-                    <div>
-                        <p>Attendance</p>
-                        <span id="totalAttendance"></span>
-                    </div>
-                    <div class="icon-container attendance-icon-container">
-                        <i class="bx bx-key icon"></i>
-                    </div>
-                </div>
-
-                <div class="features-cards report-card">
-                    <div>
-                        <p>Current GPA</p>
-                        <span id="CurrentGPA"></span>
-                    </div>
-                    <div class="icon-container report-icon-container">
-                        <i class="bx bx-medal icon"></i>
-                    </div>
-                </div>
-
-            </div>
-
-            <article class="updates">
-
-                <div class="updates-card recent-box">
-
-                    <div class="info">
-                        <p>Recent Assignments</p>
-                        <a>view all</a>
-                    </div>
-
-                    <div class="list">
-
-                        <div class="list-box">
-                            <i class="bx bx-book-alt icon"></i>
-                            <div class="list-box-info">
-                                <p>Data Structures - Project 2</p>
-                                <span class="course-code">CS - 201</span>
-                                <p class="due">Due in 2 days</p>
-                            </div>
-                        </div>
-
-                        <div class="list-box">
-                            <i class="bx bx-book-alt icon"></i>
-                            <div class="list-box-info">
-                                <p>Data Structures - Project 2</p>
-                                <span class="course-code">CS - 201</span>
-                                <p class="due">Due in 2 days</p>
-                            </div>
-                        </div>
-
-                        <div class="list-box">
-                            <i class="bx bx-book-alt icon"></i>
-                            <div class="list-box-info">
-                                <p>Data Structures - Project 2</p>
-                                <span class="course-code">CS - 201</span>
-                                <p class="due">Due in 2 days</p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="updates-card">
-
-                    <div class="info">
-                        <p>Upcoming Classes</p>
-                        <a>view Shedules</a>
-                    </div>
-
-                    <div class="list">
-                        <div class="list-box">
-                            <i class="bx bx-key upcoming-icon"></i>
-                            <div class="list-box-info">
-                                <p>Physics Lab</p>
-                                <span class="class-time">CS - 201</span>
-                                <p class="class-venue">Lab 204</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </article>
-
-        </section>
-
-
-        <!-- PROFILE SECTION -->
-
-
-        <section class="main-content profile-section">
-
-            <article class="profile-container">
-
-                <div class="info">
-                    <div class="profile-image">
-                        <img id="profile-pic-display" src="css/images/user.png" alt="profile picture">
-                        <i class="bx bx-camera" onclick="document.getElementById('image-upload-input').click()"></i>
-                    </div>
-                    <input type="file" id="image-upload-input" accept="image/*" style="display: none;">
-                    
-                    <p class="username"></p>
-                    <p class="useremail"></p>
-                </div>
-
-                <div class="edit-profile">
-
-                    <label for="firstName">Full Name</label>
-                    <div class="input-icon-container">
-                        <i class="bx bx-user"></i>
-                        <input
-                         type="text" 
-                         name="fullname" 
-                         id="fullName" 
-                         value="Yahaya Lukman" 
-                         disabled
-                         >
-                    </div>
-
-                    <label for="email">Email</label>
-                    <div class="input-icon-container">
-                        <i class="bx bx-at"></i>
-                        <input
-                         type="email" 
-                         name="email" 
-                         id="email" 
-                         value="youremail@gmail.com" 
-                         disabled
-                         >
-                    </div>
-
-                    <label for="bio">Bio</label>
-                    <textarea
-                     name="bio" 
-                     rows="5" 
-                     id="bio" 
-                     disabled>
-                    </textarea>
-
-                    <button type="button" id="editProfileBtn">Edit Profile</button>
-
-                    <div class="edit">
-                        <button type="button" id="saveProfileChanges">Save Changes</button>
-                        <button type="button" id="cancelProfileChanges">Cancel</button>
-                    </div>
-
-                </div>
-                
-            </article>
-
-            <article class="academic-info">
-
-                <p>Academic Info</p>
-
-                <div class="academic-container">
-
-                    <div class="academic-box">
-                        <i class="bx bx-book-open"></i>
-                        <div>
-                            <p class="major">Major</p>
-                            <p>Computer Science</p>
-                        </div>
-                    </div>
-
-                    <div class="academic-box">
-                        <i class="bx bx-book-open"></i>
-                        <div>
-                            <p class="major">Major</p>
-                            <p>Computer Science</p>
-                        </div>
-                    </div>
-
-                    <div class="academic-box">
-                        <i class="bx bx-book-open"></i>
-                        <div>
-                            <p class="major">Major</p>
-                            <p>Computer Science</p>
-                        </div>
-                    </div>
-
-                    <div class="academic-box">
-                        <i class="bx bx-book-open"></i>
-                        <div>
-                            <p class="major">Major</p>
-                            <p>Computer Science</p>
-                        </div>
-                    </div>
-
-                </div>
-
-            </article>
-
-        </section>
-
-
-        <!-- COURSES SECTION -->
-
-        <!-- Add Course Modal -->
-    <div class="modal" id="addCourseModal">
-    <fieldset>
-        <legend>Add New Course</legend>
-
-        <label>Course Title</label>
-        <input type="text" id="courseTitleInput" placeholder="e.g., Data Structures">
-
-        <label>Instructor</label>
-        <input type="text" id="courseInstructorInput" placeholder="e.g., Dr. Smith">
-
-        <label>Credits</label>
-        <input type="number" id="courseCreditInput" value="3">
-
-        <label>Semester</label>
-        <select id="selectSemester">
-            <option>First Semester</option>
-            <option>Second Semester</option>
-        </select>
-
-        <P id="addCourseErrorMessage"></P>
-        <div class="modal-actions">
-            <button id="saveCourse">Add Course</button>
-            <button id="cancelCourse">Cancel</button>
+        <hr />
+        <div class="menu-bar">
+          <div class="menu">
+            <li class="nav-link active-link" id="dashboardLink">
+              <a href="#"
+                ><i class="bx bx-home-alt icon"></i
+                ><span class="text nav-text">Dashboard</span></a
+              >
+            </li>
+            <li class="nav-link" id="profileLink">
+              <a href="#"
+                ><i class="bx bx-user icon"></i
+                ><span class="text nav-text">Profile</span></a
+              >
+            </li>
+            <li class="nav-link" id="courseLink">
+              <a href="#"
+                ><i class="bx bx-book-open icon"></i
+                ><span class="text nav-text">Courses</span></a
+              >
+            </li>
+            <li class="nav-link" id="assignmentLink">
+              <a href="#"
+                ><i class="bx bx-book-alt icon"></i
+                ><span class="text nav-text">Assignments</span></a
+              >
+            </li>
+            <li class="nav-link" id="gradesLink">
+              <a href="#"
+                ><i class="bx bx-medal icon"></i
+                ><span class="text nav-text">Grades</span></a
+              >
+            </li>
+            <li class="nav-link" id="settingsLink">
+              <a href="#"
+                ><i class="bx bx-cog icon"></i
+                ><span class="text nav-text">Settings</span></a
+              >
+            </li>
+            <hr />
+          </div>
+          <div class="footer-bar">
+            <li id="logoutLink">
+              <a href="#"
+                ><i class="bx bx-log-out icon"></i
+                ><span class="text nav-text">Logout</span></a
+              >
+            </li>
+          </div>
         </div>
-    </fieldset>
-    </div>
+      </nav>
 
-        <section class="main-content course-section">
+      <!-- APP HEADER -->
+      <header class="app-header">
+        <i class="bx bx-menu" id="hamburgerIcon"></i>
+        <div class="header-info">
+          <div class="user">
+            <h3 class="app-header-info">Smart Student Portal</h3>
+            <p class="app-header-text"></p>
+          </div>
+          <div class="user-img header-info-left">
+            <img
+              src="css/images/user.png"
+              alt="profile"
+              id="header-profile-picture"
+            />
+          </div>
+          <button class="add-course-btn header-info-left action-btn">
+            <i class="bx bx-plus"></i> Add Course
+          </button>
+          <button class="add-assignment-btn header-info-left action-btn">
+            <i class="bx bx-plus"></i> Add Assignment
+          </button>
+        </div>
+      </header>
 
-            <div class="filter-sort-container">
-                <div class="filter-container filter-sort">
-                    <i class="bx bx-filter"></i>
-                    <label for="filter">Filter: </label>
-                    <select name="filter" id="semesterFilter">
-                        <option value="allSemester">All</option>
-                        <option value="firstSemester">First Semester</option>
-                        <option value="secondSemester">Second Semester</option>
-                    </select>
-                </div>
-                <div class="sort-container filter-sort">
-                    <label for="sort">Sort by: </label>
-                    <select name="sort" id="courseSort">
-                        <option value="title">Title</option>
-                        <option value="credit">Credit</option>
-                    </select>
-                </div>
+      <!-- ═══════════ WELCOME / LANDING ═══════════ -->
+      <section class="welcome-section">
+        <header class="welcome-header">
+          <img src="css/images/graduation-hat.png" alt="Logo" class="logo" />
+          <h4>Smart Student Portal</h4>
+        </header>
+        <div class="welcome-container">
+          <article class="welcome-text">
+            <span class="welcome-badge">Academic Management System</span>
+            <h1>Your Academic Life,<br /><span>Organised.</span></h1>
+            <p>
+              Manage courses, track assignments, monitor grades, and stay on top
+              of your academic journey — all in one place.
+            </p>
+            <div class="welcome-actions">
+              <button class="register-btn welcome-btn btn-primary">
+                Get Started
+              </button>
+              <button class="login-btn welcome-btn btn-outline">Sign In</button>
             </div>
-
-            <div class="courses"></div>
-
-        </section>
-
-        <!-- ASSINGMENT SECTION -->
-
-        <section class="main-content assignment-section">
-            <div class="modal" id="addAssignmentModal">
-                <fieldset>
-                    <legend>Add New Assignment</legend>
-
-                    <label>Assignment Title</label>
-                    <input type="text" id="assignmentTitleInput" placeholder="e.g., Essay on Shakespere">
-
-                    <label>Course</label>
-                    <select id="selectCourse">
-                        <option>Analysis of Algorithm</option>
-                        <option>Data structure</option>
-                        <option>Computer Architecture</option>
-                        <option>GSP</option>
-                        <option>Networking</option>
-                        <option>Research Method</option>
-                    </select>
-
-                    <label>Due Date</label>
-                    <input type="date" id="dueDate" placeholder="mm/dd/yyyy">
-
-                    <P id="assignmentErrorMessage" style="color: red"></P>
-                    <div class="modal-actions">
-                        <button id="saveAssignment">Add Assignment</button>
-                        <button id="cancelAssignment">Cancel</button>
-                    </div>
-                </fieldset>
+            <div class="welcome-features">
+              <div class="welcome-item">
+                <i class="bx bx-book-open"></i><span>Course Management</span>
+              </div>
+              <div class="welcome-item">
+                <i class="bx bx-task"></i><span>Assignment Tracking</span>
+              </div>
+              <div class="welcome-item">
+                <i class="bx bx-medal"></i><span>Grade Monitoring</span>
+              </div>
             </div>
+          </article>
+          <div class="welcome-image">
+            <img src="css/images/student.png" alt="Student" />
+          </div>
+        </div>
+      </section>
 
-            <div class="assignment-filter-container">
-                <label for="assignmentCourses">Courses:</label>
-                <select id="selectCourseFilter">
-                    <option value="all courses">All Courses</option>
-                    <option value="analysis of algorithm">Analysis of Algorithm</option>
-                    <option value="data structure">Data structure</option>
-                    <option value="computer architecture">Computer Architecture</option>
-                    <option value="gsp">GSP</option>
-                    <option value="networking">Networking</option>
-                    <option value="research method">Research Method</option>
-                </select>
+      <!-- ═══════════ REGISTRATION ═══════════ -->
+      <section class="registration-section auth-section">
+        <div class="auth-card">
+          <div class="auth-logo">
+            <img src="css/images/graduation-hat.png" alt="Logo" />
+            <h3>Create Account</h3>
+            <p>Join Smart Student Portal today</p>
+          </div>
+          <form class="registration-form auth-form" novalidate>
+            <div class="form-group">
+              <label>Username</label>
+              <div class="input-wrap">
+                <i class="bx bx-user"></i>
+                <input
+                  type="text"
+                  id="reg-username"
+                  placeholder="Choose a username"
+                />
+              </div>
+              <span class="field-error" id="err-reg-username"></span>
             </div>
-
-            <div class="assignments"></div>
-
-            <div class="modal" id="submitAssignmentModal">
-                <fieldset>
-                    <legend>Submit Assignment</legend>
-                    <p></p>
-                    <p></p>
-
-                    <label for="submit">Submission Notes or File Upload</label>
-                    <textarea name="submit" rows="5" id="submitNote"></textarea>
-                    <div class="file-upload-container" onclick="document.getElementById('submit-file-upload-input').click()">
-                        <i class="bx bx-arrow-from-bottom"></i>
-                        <p>Click to Upload File</p>
-                        <p>PDF, DOC, ZIP (max 10MB)</p>
-                    </div>
-
-                    <input type="file" id="submit-file-upload-input" style="display: none;">
-
-                    <div class="modal-actions">
-                        <button id="submitAssignmentUpload" >Submit</button>
-                        <button id="cancelAssignmentUpload">Cancel</button>
-                    </div>
-                </fieldset>
+            <div class="form-group">
+              <label>Email</label>
+              <div class="input-wrap">
+                <i class="bx bx-envelope"></i>
+                <input
+                  type="email"
+                  id="reg-email"
+                  placeholder="you@example.com"
+                />
+              </div>
+              <span class="field-error" id="err-reg-email"></span>
             </div>
-
-        </section>
-
-
-        <section class="settings-section main-content">
-            <div class="appearance-mode-container">
-                <h3>Appearance</h3>
-                <div class="mode-box">
-                    <div class="mode-text-icon">
-                        <i class="bx bx-sun" id="modeIcon"></i>
-                        <div>
-                            <h3 class="mode-text" id="modeText"></h3>
-                            <p class="mode-text-info" id="modeTextInfo"></p>
-                        </div>
-                        
-                    </div>
-                    <div class="mode-toggle-box" id="modeToggleContainer">
-                        <div class="mode-toggle-switch"></div>
-                    </div>
-                </div>
+            <div class="form-group">
+              <label>Full Name</label>
+              <div class="input-wrap">
+                <i class="bx bx-id-card"></i>
+                <input
+                  type="text"
+                  id="reg-fullname"
+                  placeholder="Your full name"
+                />
+              </div>
+              <span class="field-error" id="err-reg-fullname"></span>
             </div>
+            <div class="form-group">
+              <label>Password</label>
+              <div class="input-wrap">
+                <i class="bx bx-lock"></i>
+                <input
+                  type="password"
+                  id="reg-password"
+                  placeholder="Min 8 chars + a number"
+                />
+                <i class="bx bx-hide pw-toggle" data-target="reg-password"></i>
+              </div>
+              <span class="field-error" id="err-reg-password"></span>
+            </div>
+            <div class="form-group">
+              <label>Confirm Password</label>
+              <div class="input-wrap">
+                <i class="bx bx-lock-alt"></i>
+                <input
+                  type="password"
+                  id="reg-confirm-password"
+                  placeholder="Repeat your password"
+                />
+                <i
+                  class="bx bx-hide pw-toggle"
+                  data-target="reg-confirm-password"
+                ></i>
+              </div>
+              <span class="field-error" id="err-reg-confirm"></span>
+            </div>
+            <button type="submit" class="btn-primary submit-btn">
+              Create Account
+            </button>
+          </form>
+          <p class="auth-switch">
+            Already have an account?
+            <a id="showLoginSection" href="#">Sign In</a>
+          </p>
+          <button class="back-btn" id="registrationSectionBackBtn">
+            <i class="bx bx-arrow-back"></i> Back
+          </button>
+        </div>
+      </section>
 
-        </section>
+      <!-- ═══════════ LOGIN ═══════════ -->
+      <section class="login-section auth-section">
+        <div class="auth-card">
+          <div class="auth-logo">
+            <img src="css/images/graduation-hat.png" alt="Logo" />
+            <h3>Welcome Back</h3>
+            <p>Sign in to your account</p>
+          </div>
+          <form class="login-form auth-form" novalidate>
+            <div class="form-group">
+              <label>Username</label>
+              <div class="input-wrap">
+                <i class="bx bx-user"></i>
+                <input
+                  type="text"
+                  id="login-username"
+                  placeholder="Your username"
+                />
+              </div>
+              <span class="field-error" id="err-login-username"></span>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <div class="input-wrap">
+                <i class="bx bx-lock"></i>
+                <input
+                  type="password"
+                  id="login-password"
+                  placeholder="Your password"
+                />
+                <i
+                  class="bx bx-hide pw-toggle"
+                  data-target="login-password"
+                ></i>
+              </div>
+              <span class="field-error" id="err-login-password"></span>
+            </div>
+            <div class="form-row">
+              <label class="checkbox-label">
+                <input type="checkbox" id="rememberMe" /> Remember me
+              </label>
+              <a id="forgotPasswordSection" href="#" class="forgot-link"
+                >Forgot password?</a
+              >
+            </div>
+            <button type="submit" class="btn-primary submit-btn">
+              Sign In
+            </button>
+          </form>
+          <p class="auth-switch">
+            Don't have an account?
+            <a id="showRegistrationSection" href="#">Register</a>
+          </p>
+          <button class="back-btn" id="loginSectionBackBtn">
+            <i class="bx bx-arrow-back"></i> Back
+          </button>
+        </div>
+      </section>
+
+      <!-- ═══════════ FORGOT PASSWORD ═══════════ -->
+      <section class="forgot-password-section auth-section">
+        <div class="auth-card">
+          <div class="auth-logo">
+            <i
+              class="bx bx-lock-open-alt"
+              style="font-size: 2.5rem; color: var(--primary-color)"
+            ></i>
+            <h3>Forgot Password</h3>
+            <p>Enter your email to reset your password</p>
+          </div>
+          <form class="forgot-password-form auth-form" novalidate>
+            <div class="form-group">
+              <label>Email Address</label>
+              <div class="input-wrap">
+                <i class="bx bx-envelope"></i>
+                <input
+                  type="email"
+                  id="forgot-email"
+                  placeholder="you@example.com"
+                />
+              </div>
+              <span class="field-error" id="err-forgot-email"></span>
+            </div>
+            <button type="submit" class="btn-primary submit-btn">
+              Reset Password
+            </button>
+          </form>
+          <button class="back-btn" id="forgotPasswordBackBtn">
+            <i class="bx bx-arrow-back"></i> Back to Login
+          </button>
+        </div>
+      </section>
+
+      <!-- ═══════════ RESET PASSWORD ═══════════ -->
+      <section class="reset-password-section auth-section">
+        <div class="auth-card">
+          <div class="auth-logo">
+            <i
+              class="bx bx-key"
+              style="font-size: 2.5rem; color: var(--primary-color)"
+            ></i>
+            <h3>Reset Password</h3>
+            <p>Choose a new strong password</p>
+          </div>
+          <form class="reset-password-form auth-form" novalidate>
+            <div class="form-group">
+              <label>New Password</label>
+              <div class="input-wrap">
+                <i class="bx bx-lock"></i>
+                <input
+                  type="password"
+                  id="new-password"
+                  placeholder="New password"
+                />
+                <i class="bx bx-hide pw-toggle" data-target="new-password"></i>
+              </div>
+              <span class="field-error" id="err-new-password"></span>
+            </div>
+            <div class="form-group">
+              <label>Confirm New Password</label>
+              <div class="input-wrap">
+                <i class="bx bx-lock-alt"></i>
+                <input
+                  type="password"
+                  id="confirm-new-password"
+                  placeholder="Confirm new password"
+                />
+                <i
+                  class="bx bx-hide pw-toggle"
+                  data-target="confirm-new-password"
+                ></i>
+              </div>
+              <span class="field-error" id="err-confirm-new-password"></span>
+            </div>
+            <button type="submit" class="btn-primary submit-btn">
+              Update Password
+            </button>
+          </form>
+          <button class="back-btn" id="resetPasswordBackBtn">
+            <i class="bx bx-arrow-back"></i> Back
+          </button>
+        </div>
+      </section>
+
+      <!-- ═══════════ DASHBOARD ═══════════ -->
+      <section class="dashboard-section main-content">
+        <div class="features-container">
+          <div class="features-cards course-card" id="dashGoToCourses">
+            <div>
+              <p>Total Courses</p>
+              <span id="totalCourse">0</span>
+            </div>
+            <div class="icon-container course-icon-container">
+              <i class="bx bx-book-open"></i>
+            </div>
+          </div>
+          <div class="features-cards assignment-card" id="dashGoToAssignments">
+            <div>
+              <p>Assignments Due</p>
+              <span id="totalAssignmentDue">0</span>
+            </div>
+            <div class="icon-container assignment-icon-container">
+              <i class="bx bx-task"></i>
+            </div>
+          </div>
+          <div class="features-cards gpa-card">
+            <div>
+              <p>Current GPA</p>
+              <span id="currentGPA">—</span>
+            </div>
+            <div class="icon-container gpa-icon-container">
+              <i class="bx bx-medal"></i>
+            </div>
+          </div>
+          <div class="features-cards submitted-card">
+            <div>
+              <p>Submitted</p>
+              <span id="totalSubmitted">0</span>
+            </div>
+            <div class="icon-container submitted-icon-container">
+              <i class="bx bx-check-circle"></i>
+            </div>
+          </div>
+        </div>
+
+        <article class="updates">
+          <div class="updates-card">
+            <div class="updates-header">
+              <p>Recent Assignments</p>
+              <a id="viewAllAssignments" href="#">View all</a>
+            </div>
+            <div class="list" id="recentAssignmentsList">
+              <div class="empty-state">
+                <i class="bx bx-task"></i>
+                <p>No assignments yet</p>
+              </div>
+            </div>
+          </div>
+          <div class="updates-card">
+            <div class="updates-header">
+              <p>My Courses</p>
+              <a id="viewAllCourses" href="#">View all</a>
+            </div>
+            <div class="list" id="recentCoursesList">
+              <div class="empty-state">
+                <i class="bx bx-book-open"></i>
+                <p>No courses added yet</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ═══════════ PROFILE ═══════════ -->
+      <section class="main-content profile-section">
+        <article class="profile-container">
+          <div class="info">
+            <div class="profile-image">
+              <img
+                id="profile-pic-display"
+                src="css/images/user.png"
+                alt="profile picture"
+              />
+              <i
+                class="bx bx-camera"
+                id="cameraIcon"
+                onclick="document.getElementById('image-upload-input').click()"
+              ></i>
+            </div>
+            <input
+              type="file"
+              id="image-upload-input"
+              accept="image/*"
+              style="display: none"
+            />
+            <p class="username"></p>
+            <p class="useremail"></p>
+          </div>
+          <div class="edit-profile">
+            <div class="form-group">
+              <label>Full Name</label>
+              <div class="input-wrap">
+                <i class="bx bx-user"></i>
+                <input
+                  type="text"
+                  id="fullName"
+                  value=""
+                  disabled
+                  placeholder="Your full name"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <div class="input-wrap">
+                <i class="bx bx-envelope"></i>
+                <input
+                  type="email"
+                  id="profileEmail"
+                  value=""
+                  disabled
+                  placeholder="Your email"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Bio</label>
+              <textarea
+                name="bio"
+                rows="3"
+                id="bio"
+                disabled
+                placeholder="Tell us about yourself..."
+              ></textarea>
+            </div>
+            <button type="button" id="editProfileBtn" class="btn-primary">
+              Edit Profile
+            </button>
+            <div class="edit" style="display: none">
+              <button type="button" id="saveProfileChanges" class="btn-primary">
+                Save Changes
+              </button>
+              <button
+                type="button"
+                id="cancelProfileChanges"
+                class="btn-outline"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </article>
+        <article class="academic-info">
+          <p class="section-label">Academic Info</p>
+          <div class="academic-container">
+            <div class="academic-box">
+              <i class="bx bx-book-open"></i>
+              <div>
+                <p class="major">Department</p>
+                <p id="acadDept">—</p>
+              </div>
+            </div>
+            <div class="academic-box">
+              <i class="bx bx-calendar"></i>
+              <div>
+                <p class="major">Level</p>
+                <p id="acadLevel">—</p>
+              </div>
+            </div>
+            <div class="academic-box">
+              <i class="bx bx-id-card"></i>
+              <div>
+                <p class="major">Matric No.</p>
+                <p id="acadMatric">—</p>
+              </div>
+            </div>
+            <div class="academic-box">
+              <i class="bx bx-medal"></i>
+              <div>
+                <p class="major">GPA</p>
+                <p id="acadGPA">—</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ═══════════ COURSES ═══════════ -->
+      <div class="modal" id="addCourseModal">
+        <div class="modal-card">
+          <h3 class="modal-title">Add New Course</h3>
+          <div class="form-group">
+            <label>Course Title</label>
+            <input
+              type="text"
+              id="courseTitleInput"
+              placeholder="e.g., Data Structures"
+            />
+          </div>
+          <div class="form-group">
+            <label>Instructor</label>
+            <input
+              type="text"
+              id="courseInstructorInput"
+              placeholder="e.g., Dr. Smith"
+            />
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label>Credits</label>
+              <input
+                type="number"
+                id="courseCreditInput"
+                value="3"
+                min="1"
+                max="6"
+              />
+            </div>
+            <div class="form-group">
+              <label>Semester</label>
+              <select id="selectSemester">
+                <option>First Semester</option>
+                <option>Second Semester</option>
+              </select>
+            </div>
+          </div>
+          <span class="field-error" id="addCourseErrorMessage"></span>
+          <div class="modal-actions">
+            <button id="saveCourse" class="btn-primary">Add Course</button>
+            <button id="cancelCourse" class="btn-outline">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <section class="main-content course-section">
+        <div class="filter-sort-container">
+          <div class="filter-sort">
+            <i class="bx bx-filter"></i>
+            <select id="semesterFilter">
+              <option value="allSemester">All Semesters</option>
+              <option value="firstSemester">First Semester</option>
+              <option value="secondSemester">Second Semester</option>
+            </select>
+          </div>
+          <div class="filter-sort">
+            <i class="bx bx-sort"></i>
+            <select id="courseSort">
+              <option value="default">Default</option>
+              <option value="title">By Title</option>
+              <option value="credit">By Credit</option>
+            </select>
+          </div>
+        </div>
+        <div class="courses" id="coursesContainer">
+          <div class="empty-state full-width">
+            <i class="bx bx-book-open"></i>
+            <p>No courses yet. Click "+ Add Course" to get started.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ ASSIGNMENTS ═══════════ -->
+      <div class="modal" id="addAssignmentModal">
+        <div class="modal-card">
+          <h3 class="modal-title">Add New Assignment</h3>
+          <div class="form-group">
+            <label>Assignment Title</label>
+            <input
+              type="text"
+              id="assignmentTitleInput"
+              placeholder="e.g., Essay on Data Structures"
+            />
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label>Course</label>
+              <select id="selectCourse">
+                <option value="">-- Select Course --</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Priority</label>
+              <select id="assignmentPriority">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Due Date</label>
+            <input type="date" id="dueDate" />
+          </div>
+          <span class="field-error" id="assignmentErrorMessage"></span>
+          <div class="modal-actions">
+            <button id="saveAssignment" class="btn-primary">
+              Add Assignment
+            </button>
+            <button id="cancelAssignment" class="btn-outline">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <section class="main-content assignment-section">
+        <div class="assignment-filter-container">
+          <select id="selectCourseFilter">
+            <option value="all">All Courses</option>
+          </select>
+          <select id="assignmentStatusFilter">
+            <option value="all">All Status</option>
+            <option value="pending">Pending</option>
+            <option value="submitted">Submitted</option>
+          </select>
+        </div>
+        <div class="assignments" id="assignmentsContainer">
+          <div class="empty-state full-width">
+            <i class="bx bx-task"></i>
+            <p>No assignments yet. Click "+ Add Assignment" to get started.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Submit Assignment Modal -->
+      <div class="modal" id="submitAssignmentModal">
+        <div class="modal-card">
+          <h3 class="modal-title">Submit Assignment</h3>
+          <p id="submitAssignmentName" class="submit-assignment-name"></p>
+          <div class="form-group">
+            <label>Submission Notes</label>
+            <textarea
+              rows="3"
+              id="submitNote"
+              placeholder="Any notes for your instructor..."
+            ></textarea>
+          </div>
+          <div
+            class="file-upload-container"
+            id="uploadBox"
+            onclick="
+              document.getElementById('submit-file-upload-input').click()
+            "
+          >
+            <i class="bx bx-cloud-upload"></i>
+            <p>Click to Upload File</p>
+            <p class="upload-hint">PDF, DOC, DOCX, ZIP (max 10MB)</p>
+          </div>
+          <input
+            type="file"
+            id="submit-file-upload-input"
+            style="display: none"
+          />
+          <div class="modal-actions">
+            <button id="submitAssignmentUpload" class="btn-primary">
+              Submit
+            </button>
+            <button id="cancelAssignmentUpload" class="btn-outline">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ GRADES ═══════════ -->
+      <section class="main-content grades-section">
+        <div class="grades-summary">
+          <div class="gpa-display">
+            <div class="gpa-circle" id="gpaCircle">
+              <span id="gpaValue">—</span>
+              <small>GPA</small>
+            </div>
+            <div class="gpa-info">
+              <h3 id="gpaLabel">No grades yet</h3>
+              <p id="gradesSemesterInfo">
+                Add courses and enter grades to see your GPA
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="grades-list" id="gradesList">
+          <div class="empty-state full-width">
+            <i class="bx bx-medal"></i>
+            <p>No grades recorded yet. Add courses first.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ SETTINGS ═══════════ -->
+      <section class="settings-section main-content">
+        <div class="settings-group">
+          <h3 class="settings-title">Appearance</h3>
+          <div class="mode-box">
+            <div class="mode-text-icon">
+              <i class="bx bx-sun" id="modeIcon"></i>
+              <div>
+                <h3 id="modeText">Dark Mode</h3>
+                <p id="modeTextInfo">Light theme enabled</p>
+              </div>
+            </div>
+            <div class="mode-toggle-box" id="modeToggleContainer">
+              <div class="mode-toggle-switch"></div>
+            </div>
+          </div>
+        </div>
+        <div class="settings-group">
+          <h3 class="settings-title">Account</h3>
+          <div class="settings-item">
+            <div>
+              <h4>Change Password</h4>
+              <p>Update your account password</p>
+            </div>
+            <button class="btn-outline" id="changePasswordBtn">Change</button>
+          </div>
+          <div class="settings-item danger-item">
+            <div>
+              <h4>Delete Account</h4>
+              <p>Permanently remove your account and all data</p>
+            </div>
+            <button class="btn-danger" id="deleteAccountBtn">Delete</button>
+          </div>
+        </div>
+        <div class="settings-group">
+          <h3 class="settings-title">About</h3>
+          <div class="settings-item">
+            <div>
+              <h4>Smart Student Portal</h4>
+              <p>Version 2.0 — Built with HTML, CSS & JavaScript</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
- 
-    <script type="module" src="javascript/auth.js"></script>
+
+    <script src="javascript/storage.js"></script>
+    <script src="javascript/auth.js"></script>
     <script src="javascript/ui.js"></script>
     <script src="javascript/app.js"></script>
-</body>
+  </body>
 </html>

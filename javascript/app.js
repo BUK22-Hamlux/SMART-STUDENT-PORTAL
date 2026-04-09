@@ -1,31 +1,23 @@
-window.addEventListener("DOMContentLoaded", () => {
+// ── INIT ───────────────────────────────────────────────────────────────────
+document.addEventListener("DOMContentLoaded", () => {
+  // Apply saved theme
+  if (localStorage.getItem("sp_theme") === "dark") {
+    document.body.classList.add("dark");
+  }
 
+  // Check if user is already logged in
+  const currentUser = localStorage.getItem("sp_currentUser");
+  if (currentUser) {
+    showDashboard();
+  } else {
     showLandingPage();
+  }
 
-    const registerBtn = document.querySelector(".register-btn");
-    const loginBtn = document.querySelector(".login-btn");
-
-    if(registerBtn) 
-        registerBtn.addEventListener("click", showRegistrationSection);
-    if(loginBtn) 
-        loginBtn.addEventListener("click", showLoginSection);
-
-    // Back buttons inside forms
-    const regBackBtn = document.getElementById("registration-back-btn");
-    if(regBackBtn) 
-        regBackBtn.addEventListener("click", e => {
-        e.preventDefault();
-        registrationBackBtn();
-    });
-
-    const loginBackBtnEl = document.getElementById("login-back-btn");
-    if(loginBackBtnEl) 
-        loginBackBtnEl.addEventListener("click", e => {
-        e.preventDefault();
-        loginBackBtn();
-    });
+  // Welcome page buttons
+  document
+    .querySelector(".register-btn")
+    .addEventListener("click", showRegistrationSection);
+  document
+    .querySelector(".login-btn")
+    .addEventListener("click", showLoginSection);
 });
-
-    
-
-
